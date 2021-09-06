@@ -1,0 +1,30 @@
+{
+  "name": "error-report",
+  "version": "1.0.0",
+  "description": "错误日志上报",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config ./public/webpack.dev.js --open",
+    "build": "webpack --config ./public/webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiwenHub/error-report.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caiwenHub/error-report/issues"
+  },
+  "homepage": "https://github.com/caiwenHub/error-report#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.3"
+  }
+}
