@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const fetch = async ({ params, url, method, ...other }) => {
+const request = async ({ params, url, method='put', ...other }) => {
   
   let config = {
     baseURL: 'http://localhost:3000',
@@ -22,4 +22,4 @@ const fetch = async ({ params, url, method, ...other }) => {
   return response;
 }
 
-export default fetch
+export default request
