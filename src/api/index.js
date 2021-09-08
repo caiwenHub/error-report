@@ -1,7 +1,7 @@
 import request from '../utils/request'
 
-export const report = (params) => request({
-  method: 'post',
-  url: '/',
+export const reportApi = (method, params, url) => request({
+  method,
+  url,
   params
 })

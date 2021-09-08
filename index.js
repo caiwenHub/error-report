@@ -3,9 +3,11 @@ import storage from './src/utils/storage'
 import injectJsError from './src/lib/js-error'
 import {injectXHR} from './src/lib/xhr-error'
 import request from './src/utils/request'
+import ReportError from "./src/lib";
 
 
 
+const report = ReportError.getInstance({url: 'http://localhost:8080', data: {a: 1}, extend: 'ddddd'})
 injectJsError()
 injectXHR()
 
@@ -41,3 +43,5 @@ btn4.onclick = () => {
   }).then(res => console.log(res))
     .catch((err) => console.log(err))
 }
+
+// 提供给外界一个构造函数，只能有一个实例存在

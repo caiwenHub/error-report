@@ -2,6 +2,8 @@ export const getWinUrl = () => location.href
 
 export const isStr = val => val && typeof val === 'string'
 
+export const isNum = val => typeof val === 'number' && val === val
+
 export const isObj = obj => obj && Object.prototype.toString.call(obj) === "[object Object]"
 
 export const isRealObj = obj => isObj(obj) && Reflect.ownKeys(obj).length
@@ -55,12 +57,37 @@ export function getIE() {
  * 图片打点
  */
 export const imgReport = (url) => {
+  console.log('图片打点', url)
   if (isStr) {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const img = new Image()
       img.onerror = reject
       img.onload = resolve
       img.src = url;
     })
   }
+  return new Promise().reject('图片url为空')
+}
+
+/**
+ * 格式化put url参数
+ * @param {String} url 上报url
+ * @param {Object} param 要上报的参数
+ */
+export const formatQuery = (url, param) => {
+  if (isStr(url) && isRealObj(param)) {
+    let temp = ''
+    const params = Object.entries(param)
+    params.forEach((item, index) => {
+      let [key, value] = item;
+      if (isObj(value) || isArr(value)) value = JSON.stringify(value)
+      temp += index + 1 < params.length
+        ? `${key}=${value}&`
+        : `${key}=${value}`
+    })
+    return url.indexOf('?') > 0
+      ? `${url}&${temp}`
+      : `${url}?${temp}`
+  }
+  return ''
 }
